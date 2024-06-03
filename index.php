@@ -80,6 +80,9 @@
         ?>  
     </table>
 
+    <br><hr><br>
+
+    <a href="ajoutModele.php">Ajout Modèle PHP</a>
 
 
 </body>
