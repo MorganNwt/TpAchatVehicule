@@ -7,11 +7,13 @@
        
        
 		CREATE TABLE IF NOT EXISTS PROPRIETAIRES(
-        id_personne		int(11) 			NOT NULL,
-        nom				varchar(20)			NOT NULL,
-        prenom			varchar(20)			NOT NULL,
-        adresse			varchar(50)   	 	NOT NULL,
-        ville			varchar(20)			NOT NULL,
+        id_personne		int(11) 			NOT NULL
+                                            PRIMARY KEY
+                                            AUTO_INCREMENT,
+        nom				varchar(30)			NOT NULL,
+        prenom			varchar(30)			NOT NULL,
+        adresse			varchar(200)   	 	NOT NULL,
+        ville			varchar(30)			NOT NULL,
         codePostal		int(5)				NOT NULL
         
         )ENGINE=MyISAM
@@ -60,7 +62,10 @@
         ALTER TABLE VOITURES ADD CONSTRAINT CK_VOITURES_couleur CHECK (couleur='CL' OR couleur='MO' OR couleur='FO');
         ALTER TABLE VOITURES ADD CONSTRAINT FK_VOITURES_id_modele FOREIGN KEY VIOITURES(id_modele)
         														REFERENCES 	MODELES(id_modele);
-        ALTER TABLE CARTESGRISES ADD CONSTRAINT FK_VOITURES_immatriculation FOREIGN KEY VOITURES(immatriculation) 																	REFERENCES VOITURES(immatriculation); 
+        ALTER TABLE CARTESGRISES ADD CONSTRAINT FK_CARTESGRISES_immatriculation FOREIGN KEY VOITURES(immatriculation) 		
+        															REFERENCES VOITURES(immatriculation);
+        ALTER TABLE CARTESGRISES ADD CONSTRAINT FK_CARTESGRISES_id_personne FOREIGN KEY CARTESGRISES(id_personne) 		
+        															REFERENCES PROPRIETAIRES(id_personne); 
         
         
 	
