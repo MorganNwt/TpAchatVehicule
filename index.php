@@ -83,6 +83,11 @@
     <br><hr><br>
 
     <a href="ajoutModele.php">Ajout Modèle PHP</a>
+    <br>
+    <a href="connect.php">Ce connecter</a>
+    
+    
+
 
 
 </body>

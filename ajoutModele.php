@@ -10,6 +10,7 @@
             'marque'=>FILTER_SANITIZE_FULL_SPECIAL_CHARS,
             'carburant'=>FILTER_SANITIZE_FULL_SPECIAL_CHARS
         ]);
+        
         // 2- J'hydrate les variables à utiliser pour remplacer les paramètres de la requête
         $modele = $_POST['modele'];
         $marque = $_POST['marque'];
