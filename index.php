@@ -54,7 +54,7 @@
 
     <br><hr><br>
 
-    <h3>Exercice 3</h3>
+    <h2>Exercice 3</h2>
     <p>Créer un formulaire qui permet l’insertion de nouvelles données dans la table 
         « modeles ».
     </p>
@@ -82,9 +82,17 @@
 
     <br><hr><br>
 
+    <h2>Exercice 4</h2>
+
     <a href="ajoutModele.php">Ajout Modèle PHP</a>
     <br>
     <a href="connect.php">Ce connecter</a>
+
+    <br><hr><br>
+
+    <h2>Exercice 5</h2>
+
+    <a href="voiture.php">Voitures</a>
     
     
 

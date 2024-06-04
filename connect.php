@@ -3,17 +3,22 @@
 
     require_once 'service/db_connect.php';
    
-
+    
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        // 1- Je nettoie les données du formulaire
         $_POST = filter_input_array( INPUT_POST, [
             'id'=>FILTER_SANITIZE_NUMBER_INT,
             'nom'=>FILTER_SANITIZE_FULL_SPECIAL_CHARS
         ]);
 
+        // 2- J'hydrate les variables à utiliser pour remplacer les param de la requête
         $id = $_POST['id'];
         $nom = $_POST['nom'];
 
+        // 3- J'écris ma requête paramétré
         $requete = 'SELECT id_personne, nom FROM PROPRIETAIRES WHERE id_personne = :id AND nom = :nom';
+        
+        // 4- Je prépare ma requête
         $stmt = $pdo->prepare($requete);
 
         // 5 - Je remplace les paramètres par des variables qui possèdent les valeurs à persister
@@ -26,6 +31,10 @@
 
         $nb = $stmt->rowCount();
 
+        // si $nb vos 1, ALORS j'autorise la connexion et je redirige l'utilisateur vers une page de 
+        // modification de profil
+        // ATTENTION n'oubliez pas d'ouvrir une session et de stocker l'id de l'utilisateur 
+        // dans $_SESSION
         if ($nb > 0) {
             $_SESSION['id'] = $id;
             header('Location: updateProprietaire.php');
