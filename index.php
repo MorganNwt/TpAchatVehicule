@@ -84,15 +84,15 @@
 
     <h2>Exercice 4</h2>
 
-    <a href="ajoutModele.php">Ajout Modèle PHP</a>
+    <a href="view/ajoutModele.php">Ajout Modèle PHP</a>
     <br>
-    <a href="connect.php">Ce connecter</a>
+    <a href="view/connect.php">Ce connecter</a>
 
     <br><hr><br>
 
     <h2>Exercice 5</h2>
 
-    <a href="voiture.php">Voitures</a>
+    <a href="view/voiture.php">Voitures</a>
     
     
 

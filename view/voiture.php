@@ -12,7 +12,7 @@
         header('Location: updateProprietaire.php');
     }
 
-    require_once 'service/db_connect.php';
+    require_once '../service/db_connect.php';
 
     $requete = 'SELECT immatriculation, couleur, dateVoiture FROM voitures';
     $stmt = $pdo->query($requete);
@@ -29,7 +29,7 @@
 </head>
 <body>
     <nav>
-        <a href="voitures/createVoiture.php">Enregistrer un nouveau véhicule</a>
+        <a href="../voitures/createVoiture.php">Enregistrer un nouveau véhicule</a>
         <br>
         <a href="">Modifier un véhicule existant</a>
     </nav>

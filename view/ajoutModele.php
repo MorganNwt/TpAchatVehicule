@@ -1,6 +1,6 @@
 <?php
     // Import des ressources
-    require_once 'service/db_connect.php';
+    require_once '../service/db_connect.php';
 
     // Récupérer les données issus du formulaire APRES validation
     // 1 - Le code doit être execute que si $_POST est définie

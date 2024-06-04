@@ -10,7 +10,7 @@
         header('Location: connect.php');
     }
 
-    require_once 'service/db_connect.php';
+    require_once '../service/db_connect.php';
 
     /********************************************************************************
      * ICI, TOUT LE TRAITEMENT PHP QUI RECUPERE LES DONNEES DE L'UTILISATEUR POUR
@@ -85,7 +85,7 @@
 
         if($nb > 0){
             session_unset();
-            header('Location: index.php');
+            header('Location: ../index.php');
         }
      }
 ?>
