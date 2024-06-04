@@ -7,7 +7,7 @@
      * et que son id = 1 (pour simuler un employé de la préfecture)
      * Sinon, i lest redirigé vers la page de connexion
      ****************************************************************************************/
-    if($_SESSION['id'] == 1){
+    if(!$_SESSION['id'] == 17){
         header('Location: updateProprietaire.php');
     }
 
@@ -20,6 +20,46 @@
 
     // Récupération de la date du jour pour préremplir le formulaire
     $today = date('Y-m-d');
+/**********************************************************
+ * Traitement pour éxecuter une requête update
+ *********************************************************/
+
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $_POST = filter_input_array( INPUT_POST, [
+            'immatriculation'=>FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+            'id_modele'=>FILTER_SANITIZE_NUMBER_INT,
+            'couleur'=>FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+            'dateVoiture'=>FILTER_SANITIZE_FULL_SPECIAL_CHARS
+        ]);
+
+        // 2 - j'hydrate les variables à utiliser pour remplacer les paramètres de la requête
+        $immatriculation = $_POST['immatriculation'];
+        $id_modele = $_POST['id_modele'];
+        $couleur = $_POST['couleur'];
+        $dateVoiture = $_POST['dateVoiture'];
+
+        // 3- J'écris ma requête paramétré
+        $requete = 'INSERT INTO voitures VALUE (:immatriculation, :id_modele, :couleur, :dateVoiture)';
+
+        // 4- Je prépare ma requête
+        $stmt = $pdo->prepare($requete);     
+
+         // 5 - Je remplace les paramètres par des variables qui possèdent les valeurs à persister
+         $stmt->bindParam(':immatriculation', $immatriculation);
+         $stmt->bindParam(':id_modele', $id_modele);
+         $stmt->bindParam(':couleur', $couleur);
+         $stmt->bindParam(':dateVoiture', $dateVoiture);
+        
+         // 6 - Execution de la requête
+         $stmt->execute();
+         $nb = $stmt->rowCount();
+
+         if($nb > 0){
+            session_unset();
+            header('Location: ../voiture.php');
+        }
+     }
 ?>
 
 <!DOCTYPE html>
@@ -40,8 +80,8 @@
             <input type="text" name="immatriculation" id="immatriculation">
             <br>
 
-            <label for="modeles"></label>
-            <select name="modeles" id="modeles">
+            <label for="id_modele"></label>
+            <select name="id_modele" id="id_modele">
                 <option value="">Coisissez le modèle du véhicule :</option>
 
                 <?php 
@@ -62,16 +102,16 @@
                 <label for="couleur">Moyen</label>
                 <br>
 
-                <input type="radio" name="couleur" id="couleur_FC" value="FC">
+                <input type="radio" name="couleur" id="couleur_FO" value="FO">
                 <label for="couleur">Foncé</label>
                 <br>
             </fieldset>     
 
-            <label for="dateAchat">Date d'achat</label>
-            <input type="date" name="dateAchat" id="dateAchat" value="<?= $today ?>">
+            <label for="dateVoiture">Date d'achat</label>
+            <input type="date" name="dateVoiture" id="dateVoiture" value="<?= $today ?>">
             <br>
 
-            <input type="submit" value="Enregistrer le nouvau véhicule">
+            <input type="submit" value="Enregistrer le nouveau véhicule">
         </fieldset>
     </form>
 

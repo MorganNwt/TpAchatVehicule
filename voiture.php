@@ -5,10 +5,10 @@
     /*****************************************************************************************
      *                                  TRES IMPORTANT :
      *  NE PAS OUBLIER DE VERIFIER SI L'UTILISATEUR EST VRAIMENT CONNECTE !!!
-     * et que son id = 1 (pour simuler un employé de la préfecture)
-     * Sinon, i lest redirigé vers la page de connexion
+     * et que son id = 17 (pour simuler un employé de la préfecture)
+     * Sinon, il est redirigé vers la page de connexion
      ****************************************************************************************/
-    if($_SESSION['id'] == 1){
+    if(!$_SESSION['id'] == 17){
         header('Location: updateProprietaire.php');
     }
 
@@ -55,11 +55,7 @@
                 echo'</tr>';
             }
         ?>
-
-
     </table>
-
-
 
 
 </body>
