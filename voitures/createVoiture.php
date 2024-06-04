@@ -8,7 +8,7 @@
      * Sinon, i lest redirigé vers la page de connexion
      ****************************************************************************************/
     if(!$_SESSION['id'] == 17){
-        header('Location: updateProprietaire.php');
+        header('Location: ../view/updateProprietaire.php');
     }
 
     require_once '../service/db_connect.php';
@@ -57,7 +57,7 @@
 
          if($nb > 0){
             session_unset();
-            header('Location: ../voiture.php');
+            header('Location: ../view/voiture.php');
         }
      }
 ?>
