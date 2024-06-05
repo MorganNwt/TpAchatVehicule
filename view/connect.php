@@ -1,6 +1,15 @@
 <?php
     session_start();
 
+    setcookie('coockieDeSession', 'Ce cookie sera détruit quand la session sera cloturée.');
+    setcookie('cookie1min', 'Ce cookie sera détruit dans 1 min', time() + 60);
+    setcookie('monCookieAvecDuree');
+    unset($_COOKIE['monCookieAvecDuree']);
+    if(isset($_COOKIE["cookie1min"])){
+        echo '<p>Valeur du cookie : ' . $_COOKIE["cookie1min"] . '</p>';
+    }
+
+
     require_once '../service/db_connect.php';
    
     

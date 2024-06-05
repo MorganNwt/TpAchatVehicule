@@ -3,10 +3,11 @@
 // PENSER TOUJOURS à ajouter ce fichier (db_connect.php) dans le fichier qui doit ce trouver 
 // à la racine du projet et qui se nomme ' gitignore".
 
+// Le try and catch pour le suivis d'éventuelles erreurs
 try{
-    // Renseignement des 3 informations nécessaires pour accéder à la BDD LEGUMES
+    // Renseignement des 3 informations nécessaires pour accéder à la BDD
 
-    // chaine de caractères de connexion à la BDD LEGUMES
+    // chaine de caractères de connexion à la BDD 
     $dsn = 'mysql:host=localhost;dbname=achatvehicule';
     // Identifiant pour accéder à la BDD
     $user = 'admin';
@@ -19,7 +20,7 @@ try{
     // création d'une instance de connexion à la BDD puis ouverture de la connexion
     $pdo = new PDO($dsn, $user, $password, $options);
     // choix de la méthode d'information en cas d'erreur
-    // - Levé des exeption
+    // - Levé des exeptions
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     echo '<p>Connexion effectuée avec le driver ' . $pdo->getAttribute(PDO::ATTR_DRIVER_NAME) . '</p>';

@@ -1,5 +1,12 @@
 <?php
     require_once 'service/db_connect.php';
+
+    // création d'un cookie avec une durée de 30 jours 
+    setCookie('monCookie', 'Voici la valeur de mon cookie, ceci est un mot de passe', time() + (30*24*60*60));
+    
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -49,17 +56,10 @@
         // Réupération des résultats
         $listeModeles = $stmt->fetchAll();
 
-      // var_dump($listeModeles);
+      //var_dump($listeModeles);
     ?>
 
-    <br><hr><br>
-
-    <h2>Exercice 3</h2>
-    <p>Créer un formulaire qui permet l’insertion de nouvelles données dans la table 
-        « modeles ».
-    </p>
-
-    <table>
+<table>
         <tr>
             <th>id_modele</th>
             <th>Modèle</th>
@@ -79,6 +79,15 @@
             }
         ?>  
     </table>
+    <br><hr><br>
+
+    <h2>Exercice 3</h2>
+    <p>Créer un formulaire qui permet l’insertion de nouvelles données dans la table 
+        « modeles ».
+    </p>
+
+    <a href="view/ajoutModele.php">Ajout Modèle PHP</a>
+    <br>
 
     <br><hr><br>
 
